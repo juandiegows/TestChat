@@ -229,6 +229,7 @@
       <DependentUpon>ModelMobile2.edmx</DependentUpon>
       <LastGenOutput>ModelMobile2.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\sql\script.sql" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
