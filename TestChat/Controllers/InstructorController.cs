@@ -13,6 +13,7 @@ using TestChat.Models.view;
 
 namespace TestChat.Controllers
 {
+    [Authorize]
     public class InstructorController : ApiController
     {
         private Mobile2Entities db = new Mobile2Entities();

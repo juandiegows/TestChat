@@ -12,6 +12,7 @@ using TestChat.Models.view;
 
 namespace TestChat.Controllers
 {
+    [Authorize]
     public class StudentController : ApiController
     {
         // GET: api/Student
