@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 
 namespace TestChat.Models.view {
-    public class ChatView {
+    public class ChatResponse {
         public long Id { get; set; }
         public long StudentId { get; set; }
         public long InstructorId { get; set; }

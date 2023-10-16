@@ -21,7 +21,7 @@ namespace TestChat.Controllers
         // GET: api/Chat
         public IHttpActionResult Get()
         {
-            return Ok(db.Chats.Select(x=> new ChatView() {
+            return Ok(db.Chats.Select(x=> new ChatResponse() {
                 Id = x.Id,
                 Date = x.Date,
                 InstructorId = x.InstructorId,
@@ -35,7 +35,7 @@ namespace TestChat.Controllers
         [ResponseType(typeof(Chats))]
         public IHttpActionResult Get(long id)
         {
-            return Ok(db.Chats.Select(x => new ChatView() {
+            return Ok(db.Chats.Select(x => new ChatResponse() {
                 Id = x.Id,
                 Date = x.Date,
                 InstructorId = x.InstructorId,
@@ -47,7 +47,7 @@ namespace TestChat.Controllers
 
         // PUT: api/Chat/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult Put(long id, ChatView chatView)
+        public IHttpActionResult Put(long id, ChatResponse chatView)
         {
             if (!ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace TestChat.Controllers
 
         // POST: api/Chat
         [ResponseType(typeof(Chats))]
-        public IHttpActionResult PostChats(ChatView chatView)
+        public IHttpActionResult PostChats(ChatResponse chatView)
         {
             if (!ModelState.IsValid)
             {

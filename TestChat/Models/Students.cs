@@ -24,6 +24,8 @@ namespace TestChat.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public byte[] Photo { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Chats> Chats { get; set; }

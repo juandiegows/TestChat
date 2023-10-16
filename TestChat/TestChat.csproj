@@ -203,6 +203,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstructorController.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Encrypt.cs" />
     <Compile Include="Models\Chats.cs">
       <DependentUpon>ModelMobile2.tt</DependentUpon>
     </Compile>
@@ -233,12 +235,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelMobile2.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Request\StudentRequest.cs" />
     <Compile Include="Models\Students.cs">
       <DependentUpon>ModelMobile2.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\view\ChatView.cs" />
-    <Compile Include="Models\view\InstructorView.cs" />
-    <Compile Include="Models\view\StudentView.cs" />
+    <Compile Include="Models\Response\ChatResponse.cs" />
+    <Compile Include="Models\Response\InstructorResponse.cs" />
+    <Compile Include="Models\Request\LoginRequest.cs" />
+    <Compile Include="Models\Response\LoginResponse.cs" />
+    <Compile Include="Models\Response\StudentResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

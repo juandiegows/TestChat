@@ -9,6 +9,8 @@ using System.Web.Http;
 
 using TestChat.Models;
 using TestChat.Models.view;
+using TestChat.Models.Request;
+using TestChat.Helpers;
 
 namespace TestChat.Controllers
 {
@@ -17,9 +19,10 @@ namespace TestChat.Controllers
     {
         // GET: api/Student
         Mobile2Entities db = new Mobile2Entities(); 
+
         public IHttpActionResult Get()
         {
-            return Ok(db.Students.ToList().Select(x=> new StudentView() {
+            return Ok(db.Students.ToList().Select(x=> new StudentResponse() {
                 FirstName = x.FirstName,
                 LastName = x.LastName,
                 Id = x.Id,  
@@ -30,7 +33,7 @@ namespace TestChat.Controllers
         // GET: api/Student/5
         public IHttpActionResult Get(int id)
         {
-            return Ok(db.Students.Select(x => new StudentView() {
+            return Ok(db.Students.Select(x => new StudentResponse() {
                 FirstName = x.FirstName,
                 LastName = x.LastName,
                 Id = x.Id,
@@ -39,7 +42,8 @@ namespace TestChat.Controllers
         }
 
         // POST: api/Student
-        public IHttpActionResult Post([FromBody]StudentView student)
+        [AllowAnonymous]
+        public IHttpActionResult Post([FromBody]StudentRequest student)
         {
             try {
                 Students students = new Students() {
@@ -47,8 +51,11 @@ namespace TestChat.Controllers
                     FirstName = student.FirstName,
                     LastName = student.LastName,
                     Photo = student.Photo,
+                    username= student.UserName,
+                    password = Encrypt.GetSHA256(student.Password)
                 };
                 db.Students.Add(students);
+                db.SaveChanges();
                 return CreatedAtRoute("DefaultApi", new { id = students.Id }, students);
             }
             catch (Exception) {
@@ -57,8 +64,16 @@ namespace TestChat.Controllers
         }
 
         // PUT: api/Student/5
-        public IHttpActionResult Put(int id, [FromBody]StudentView student)
+        public IHttpActionResult Put(int id, [FromBody]StudentRequest student)
         {
+            Students students = new Students() {
+                Id = student.Id,
+                FirstName = student.FirstName,
+                LastName = student.LastName,
+                Photo = student.Photo,
+                username = student.UserName,
+                password = Encrypt.GetSHA256(student.Password)
+            };
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
@@ -67,7 +82,7 @@ namespace TestChat.Controllers
                 return BadRequest();
             }
 
-            db.Entry(student).State = EntityState.Modified;
+            db.Entry(students).State = EntityState.Modified;
 
             try {
                 db.SaveChanges();

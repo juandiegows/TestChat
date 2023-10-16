@@ -21,7 +21,7 @@ namespace TestChat.Controllers
         // GET: api/Instructor
         public IHttpActionResult Get()
         {
-            return Ok(db.Instructors.Select(x => new InstructorView() {
+            return Ok(db.Instructors.Select(x => new InstructorResponse() {
                 FirstName = x.FirstName,
                 LastName = x.LastName,
                 Id = x.Id,
@@ -33,7 +33,7 @@ namespace TestChat.Controllers
         [ResponseType(typeof(Instructors))]
         public IHttpActionResult Get(long id)
         {
-            return Ok(db.Instructors.Select(x => new InstructorView() {
+            return Ok(db.Instructors.Select(x => new InstructorResponse() {
                 FirstName = x.FirstName,
                 LastName = x.LastName,
                 Id = x.Id,
@@ -43,7 +43,7 @@ namespace TestChat.Controllers
 
         // PUT: api/Instructor/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult Put(long id, InstructorView instructorView)
+        public IHttpActionResult Put(long id, InstructorResponse instructorView)
         {
 
             if (!ModelState.IsValid)
@@ -85,7 +85,7 @@ namespace TestChat.Controllers
 
         // POST: api/Instructor
         [ResponseType(typeof(Instructors))]
-        public IHttpActionResult Post(InstructorView instructorView)
+        public IHttpActionResult Post(InstructorResponse instructorView)
         {
             if (!ModelState.IsValid)
             {

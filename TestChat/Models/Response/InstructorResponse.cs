@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 
 namespace TestChat.Models.view {
-    public class StudentView {
+    public class InstructorResponse {
         public long Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Description { get; set; }
         public byte[] Photo { get; set; }
     }
 }
