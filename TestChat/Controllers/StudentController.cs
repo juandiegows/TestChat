@@ -18,7 +18,7 @@ namespace TestChat.Controllers
         Mobile2Entities db = new Mobile2Entities(); 
         public IHttpActionResult Get()
         {
-            return Ok(db.Students.Select(x=> new StudentView() {
+            return Ok(db.Students.ToList().Select(x=> new StudentView() {
                 FirstName = x.FirstName,
                 LastName = x.LastName,
                 Id = x.Id,  
