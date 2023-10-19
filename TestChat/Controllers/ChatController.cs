@@ -45,6 +45,18 @@ namespace TestChat.Controllers
             }).FirstOrDefault());
         }
 
+
+        [Route("api/chat/chatby")]
+        public IHttpActionResult GetByStudentToInstructor(long student, long instructor) {
+            return Ok(db.Chats.Where(x=> x.InstructorId == instructor && x.StudentId == student).Select(x => new ChatResponse() {
+                Id = x.Id,
+                Date = x.Date,
+                InstructorId = x.InstructorId,
+                Message = x.Message,
+                Sender = x.Sender,
+                StudentId = x.StudentId
+            }).OrderByDescending(x=> x.Date).ToList());
+        }
         // PUT: api/Chat/5
         [ResponseType(typeof(void))]
         public IHttpActionResult Put(long id, ChatResponse chatView)
