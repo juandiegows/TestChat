@@ -18,8 +18,9 @@ namespace TestChat.Controllers
     public class StudentController : ApiController
     {
         // GET: api/Student
-        Mobile2Entities db = new Mobile2Entities(); 
+        Mobile2Entities db = new Mobile2Entities();
 
+        [AllowAnonymous]
         public IHttpActionResult Get()
         {
             return Ok(db.Students.ToList().Select(x=> new StudentResponse() {
